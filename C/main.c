@@ -1,17 +1,16 @@
-#include "linked_list.h"
+#include "queue.h"
 
 int main(int argc , char ** argv){
-    LinkedList * list = init_linked_list();
-    push(list , 10);
-    push(list , 20);
-    push(list , 30);
-    push(list , 40);
-    push(list , 50);
-    print_linked_list(list);
-    insert_at(list , 2 , 25);
-    print_linked_list(list);
-    delete_at(list , 2);
-    print_linked_list(list);
-    free_linked_list(list);
+    Queue* q = init_queue();
+
+    push(q, 10);
+    push(q, 20);
+    push(q, 30);
+
+    printf("Dequeued: %d\n", pop(q));
+    printf("Dequeued: %d\n", pop(q));
+    printf("Dequeued: %d\n", pop(q));
+
+    free_queue(q);
     return 0;
 }

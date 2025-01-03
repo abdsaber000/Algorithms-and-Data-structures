@@ -2,7 +2,7 @@ CC:= gcc
 CFLAGS:= -Wall
 LDFLAGS:= -lm
 INCLUDES:= -I./include/
-SRCS:= main.c src/linked_list.c src/vector.c 
+SRCS:= main.c src/queue.c
 OBJS:= $(SRCS:.c=.o)
 TARGET:= main
 
