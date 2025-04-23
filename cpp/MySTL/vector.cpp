@@ -4,15 +4,9 @@
 namespace MySTL{
 
 template<typename T>    
-class IteratorVector{
+class IteratorVector : public std::iterator<std::random_access_iterator_tag, T> {
     T* ptr;
 public:
-    // these defines are required for STL compatibility
-    using iterator_category = std::random_access_iterator_tag;
-    using value_type = T;
-    using difference_type = std::ptrdiff_t;
-    using pointer = T*;
-    using reference = T&;
 
     IteratorVector(T* p) : ptr(p) {}
     T& operator*() { return *ptr; }
