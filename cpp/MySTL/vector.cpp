@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <assert.h>
 
 namespace MySTL{
 
@@ -40,7 +41,7 @@ class vector {
     void resize(size_t new_capacity);
     
 public:
-    vector(int n = 0);
+    vector(int n = 0, T default_value = T());
     void push_back(T val);
     void pop_back();
     T& front();
@@ -55,8 +56,11 @@ public:
 
 
 template<typename T>
-vector<T>::vector(int n) : capacity(n), length(n) {
+vector<T>::vector(int n , T default_value) : capacity(n), length(n) {
     data = new T[capacity];
+    for(size_t i = 0; i < length; ++i) {
+        data[i] = default_value;
+    }
 }
 
 
@@ -145,6 +149,16 @@ int main(int argc , char ** argv){
     for(auto x : v){
         std::cout << x << " ";
     }
+    std::cout << std::endl;
+
+    auto it = std::find(v.begin(), v.end(), 5);
+    assert(it != v.end());
+    it = std::find(v.begin(), v.end(), 100);
+    assert(it == v.end());
+
+    MySTL::vector<int> v2(5, 1);
+    for(auto c : v2)
+        std::cout << c << " ";
     std::cout << std::endl;
     return 0;
 }
