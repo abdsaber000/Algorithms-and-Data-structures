@@ -28,6 +28,7 @@ public:
     bool operator<(const IteratorVector& other) const { return ptr < other.ptr; }
     bool operator!=(const IteratorVector& other) const { return ptr != other.ptr; }
     bool operator==(const IteratorVector& other) const { return ptr == other.ptr; }
+    ~IteratorVector() { ptr = nullptr; } // Destructor to avoid dangling pointer
 };
 
 
@@ -48,6 +49,7 @@ public:
     T& operator[](size_t index);
     IteratorVector<T> begin() { return IteratorVector<T>(data); }
     IteratorVector<T> end() { return IteratorVector<T>(data + length); }
+    ~vector() { delete[] data; } 
 };
 
 
