@@ -19,6 +19,7 @@ public:
     void pop();
     size_t size();
     bool empty();
+    ~stack();
 };
 
 template<typename T>
@@ -53,6 +54,17 @@ size_t stack<T>::size(){
 template<typename T>
 bool stack<T>::empty(){
     return head == nullptr;
+}
+
+template<typename T>
+stack<T>::~stack(){
+    while(head){
+        Node<T>* temp = head;
+        head = head->next;
+        delete temp;
+    }
+    head = nullptr;
+    length = 0;
 }
 
 }
